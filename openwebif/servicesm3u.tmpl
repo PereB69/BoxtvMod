@@ -1,0 +1,15 @@
+#EXTM3U 
+#EXTVLCOPT--http-reconnect=true
+#for $service in $services
+#set $_sref=$service.servicereference
+#set $_sref2=$_sref.replace(":","_")[:-1]
+#EXTINF:-1 tvg-logo=\"https://raw.githubusercontent.com/boxtvmania/picon.440x264.transparente.movistar.openbox/master/picons/$_sref2.png\",$service.servicename
+#if _sref and u"//127.0.0.1%3" in _sref
+#set $_sref=_sref.split(u":")[10].split(u"//127.0.0.1%3")[-1]
+#echo u"http://"+$auth+$host.split(u":")[0]+u":"+_sref[1:]
+#elif _sref
+#EXTVLCOPT:program=$service.program
+#echo u"http://"+$auth+$host+u"/"+_sref
+#end if
+
+#end for
